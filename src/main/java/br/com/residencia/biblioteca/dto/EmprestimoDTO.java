@@ -1,37 +1,63 @@
 package br.com.residencia.biblioteca.dto;
 
+import java.math.BigDecimal;
+import java.time.Instant;
+
+
 public class EmprestimoDTO {
 
-	private Integer codigoEditora;
-	private String nome;
 	
-	
+	private Integer codigoEmprestimo;
+	private Instant dataEmprestimo;
+	private Instant dataEntrega;
+	private BigDecimal valorEmprestimo;
+
 	public EmprestimoDTO() {		
 	}
 
-	public EmprestimoDTO(Integer codigoEditora, String nome) {
-		
-		this.codigoEditora = codigoEditora;
-		this.nome = nome;
+	
+	public EmprestimoDTO(Integer codigoEmprestimo, Instant dataEmprestimo, Instant dataEntrega,
+			BigDecimal valorEmprestimo) {
+
+		this.codigoEmprestimo = codigoEmprestimo;
+		this.dataEmprestimo = dataEmprestimo;
+		this.dataEntrega = dataEntrega;
+		this.valorEmprestimo = valorEmprestimo;
 	}
 
-	public Integer getCodigoEditora() {
-		return codigoEditora;
+
+	public Integer getCodigoEmprestimo() {
+		return codigoEmprestimo;
 	}
 
-	public void setCodigoEditora(Integer codigoEditora) {
-		this.codigoEditora = codigoEditora;
+	public void setCodigoEmprestimo(Integer codigoEmprestimo) {
+		this.codigoEmprestimo = codigoEmprestimo;
 	}
 
-	public String getNome() {
-		return nome;
+	public Instant getDataEmprestimo() {
+		return dataEmprestimo;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setDataEmprestimo(Instant dataEmprestimo) {
+		this.dataEmprestimo = dataEmprestimo;
+	}
+
+	public Instant getDataEntrega() {
+		return dataEntrega;
+	}
+
+	public void setDataEntrega(Instant dataEntrega) {
+		this.dataEntrega = dataEntrega;
+	}
+
+	public BigDecimal getValorEmprestimo() {
+		return valorEmprestimo;
+	}
+
+	public void setValorEmprestimo(BigDecimal valorEmprestimo) {
+		this.valorEmprestimo = valorEmprestimo;
 	}
 	
-		
 }
 	
 
