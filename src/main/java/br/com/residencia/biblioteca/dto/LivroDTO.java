@@ -2,7 +2,7 @@ package br.com.residencia.biblioteca.dto;
 
 import java.time.Instant;
 
-import javax.persistence.Column;
+
 
 public class LivroDTO {
 

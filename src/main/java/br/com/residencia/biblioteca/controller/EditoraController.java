@@ -29,6 +29,7 @@ public class EditoraController {
 		return new ResponseEntity<>(editoraService.getAllEditora(),
 				HttpStatus.OK);
 	}
+
 	@GetMapping("/dto")
 	public ResponseEntity<List<EditoraDTO>> getAllEditorasDTO(){
 		return new ResponseEntity<>(editoraService.getAllEditoraDTO(),
@@ -58,6 +59,10 @@ public class EditoraController {
 				HttpStatus.CREATED);
 	}
 	
+	@PutMapping("/dto/{id}")
+    public ResponseEntity<EditoraDTO> updateEditoraDTO (@RequestBody EditoraDTO editoraDTO, @PathVariable Integer id) {
+        return new ResponseEntity<>(editoraService.updateEditoraDTO(editoraDTO,id),HttpStatus.OK);
+    }
 	@PutMapping("/{id}")
 	public ResponseEntity<Editora> updateEditora(@RequestBody Editora editora, 
 			@PathVariable Integer id){
