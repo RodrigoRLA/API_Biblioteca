@@ -19,21 +19,14 @@ public class EditoraService {
 	public List<Editora> getAllEditora() {
 		return editoraRepository.findAll();
 	}
-	
+	/*
 	public List<EditoraDTO> getAllEditoraDTO() {
 		List<Editora> listaEditora = editoraRepository.findAll();
 		List<EditoraDTO> listaEditoraDTO = new ArrayList<>();
-		return ;
+		return listaEditoraDTO;
 		
-		//1. percorrer a lista de entidades Editora(chamada listaEditora)
-		//2. Na lista de entidade, pegar cada entidade existente nela
-		//3. Transformar cada entidade existente na lista em um DTO
-		//4. Adicionar cada DTO (que foi transformado a partir da entidade) na lista de DTO
-		//5. Retornar/devolver a lista de DTO preenchida
-		
-		//OBS. para converter a entidade no DTO, usar o metodo toDTO
 	}
-
+*/
 	public Editora getEditoraById(Integer idEditora) {
 		return editoraRepository.findById(idEditora).get();
 	}
@@ -63,7 +56,7 @@ public class EditoraService {
 	 * 
 	 * public List<EditoraDTO> getAllEditoraDTO(){ List<Editora> listaEditora =
 	 * getAllEditora(); List<EditoraDTO> listaDTO = new ArrayList<EditoraDTO>(); for
-	 * (int i=0; i<listaEditora.size();i++) {
+	 * (Integer i=0; i<listaEditora.size();i++) {
 	 * listaDTO.add(convertEntitytoDTO(listaEditora.get(i))); } return listaDTO; }
 	 * 
 	 * public EditoraDTO saveEditoraDTO (EditoraDTO editoraDTO) { //Implementacao

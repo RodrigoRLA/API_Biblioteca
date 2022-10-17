@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.residencia.biblioteca.dto.AlunoDTO;
 import br.com.residencia.biblioteca.entity.Aluno;
 import br.com.residencia.biblioteca.service.AlunoService;
+
 
 @RestController
 @RequestMapping("/alunos")
@@ -59,4 +61,22 @@ public class AlunoController {
 				HttpStatus.OK);
 	}
 
+	//DTO
+	/*
+	@GetMapping("/dto")
+	public ResponseEntity<List<AlunoDTO>> getAllAlunosDTO(){
+		return new ResponseEntity<>(AlunoService.getAllAlunosDTO(),
+				HttpStatus.OK);
+	}
+	*/
+	@PostMapping("/dto")
+	public ResponseEntity<AlunoDTO> saveEditoraDTO(@RequestBody AlunoDTO alunoDTO) {
+		return new ResponseEntity<>(alunoService.saveAlunoDTO(alunoDTO),
+				HttpStatus.CREATED);
+	}
+	
+	@PutMapping("/dto/{id}")
+    public ResponseEntity<AlunoDTO> updateAlunoDTO (@RequestBody AlunoDTO alunoDTO, @PathVariable Integer id) {
+        return new ResponseEntity<>(alunoService.updateAlunoDTO(alunoDTO,id),HttpStatus.OK);
+    }
 }
