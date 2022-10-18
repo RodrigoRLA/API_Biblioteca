@@ -11,6 +11,9 @@ public class EmprestimoDTO {
 	private Instant dataEmprestimo;
 	private Instant dataEntrega;
 	private BigDecimal valorEmprestimo;
+	
+	private AlunoDTO aluno;
+	private LivroDTO livro;
 
 	public EmprestimoDTO() {		
 	}
@@ -26,6 +29,25 @@ public class EmprestimoDTO {
 	}
 
 
+	public AlunoDTO getAluno() {
+		return aluno;
+	}
+
+
+	public void setAluno(AlunoDTO aluno) {
+		this.aluno = aluno;
+	}
+
+
+	public LivroDTO getLivro() {
+		return livro;
+	}
+
+
+	public void setLivro(LivroDTO livro) {
+		this.livro = livro;
+	}
+	
 	public Integer getCodigoEmprestimo() {
 		return codigoEmprestimo;
 	}
