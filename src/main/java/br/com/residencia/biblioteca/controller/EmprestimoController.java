@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import br.com.residencia.biblioteca.dto.EmprestimoDTO;
 import br.com.residencia.biblioteca.entity.Emprestimo;
 import br.com.residencia.biblioteca.service.EmprestimoService;
@@ -66,13 +67,13 @@ public class EmprestimoController {
 	}
 
 	//DTO
-	/*
-		@GetMapping("/dto")
-		public ResponseEntity<List<EmprestimoDTO>> getAllEmprestimosDTO(){
-			return new ResponseEntity<>(EmprestimoService.getAllEmprestimoDTO(),
-					HttpStatus.OK);
-		}
-		*/
+	
+	@GetMapping("/dto")
+	public ResponseEntity<List<EmprestimoDTO>> getAllEmprestimoDTO(){
+		return new ResponseEntity<>(emprestimoService.getAllEmprestimoDTO(),
+				HttpStatus.OK);
+	}
+	
 		@PostMapping("/dto")
 		public ResponseEntity<EmprestimoDTO> saveEmprestimoDTO(@RequestBody EmprestimoDTO emprestimoDTO) {
 			return new ResponseEntity<>(emprestimoService.saveEmprestimoDTO(emprestimoDTO),

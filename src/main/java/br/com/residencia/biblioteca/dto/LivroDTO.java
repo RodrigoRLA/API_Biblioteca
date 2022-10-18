@@ -3,7 +3,6 @@ package br.com.residencia.biblioteca.dto;
 import java.time.Instant;
 
 
-
 public class LivroDTO {
 
 	
@@ -12,14 +11,13 @@ public class LivroDTO {
 	private String nomeAutor;
 	private Instant dataLancamento;
 	private Integer codigoISBN;
-
-	public LivroDTO() {		
+	
+	public LivroDTO () {		
 	}
-
 	
-	
-	public LivroDTO(Integer codigoLivro, String nomeLivro, String nomeAutor, Instant dataLancamento,
+	public LivroDTO (Integer codigoLivro, String nomeLivro, String nomeAutor, Instant dataLancamento,
 			Integer codigoISBN) {
+		
 		
 		this.codigoLivro = codigoLivro;
 		this.nomeLivro = nomeLivro;

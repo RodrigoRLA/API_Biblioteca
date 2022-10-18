@@ -62,13 +62,14 @@ public class AlunoController {
 	}
 
 	//DTO
-	/*
+	
 	@GetMapping("/dto")
 	public ResponseEntity<List<AlunoDTO>> getAllAlunosDTO(){
-		return new ResponseEntity<>(AlunoService.getAllAlunosDTO(),
+		return new ResponseEntity<>(alunoService.getAllAlunosDTO(),
 				HttpStatus.OK);
 	}
-	*/
+
+	
 	@PostMapping("/dto")
 	public ResponseEntity<AlunoDTO> saveEditoraDTO(@RequestBody AlunoDTO alunoDTO) {
 		return new ResponseEntity<>(alunoService.saveAlunoDTO(alunoDTO),

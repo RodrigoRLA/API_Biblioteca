@@ -23,62 +23,58 @@ import br.com.residencia.biblioteca.service.EditoraService;
 public class EditoraController {
 	@Autowired
 	EditoraService editoraService;
-	
-	@GetMapping
-	public ResponseEntity<List<Editora>> getAllEditoras(){
-		return new ResponseEntity<>(editoraService.getAllEditora(),
-				HttpStatus.OK);
-	}
 
-	@GetMapping("/dto")
-	public ResponseEntity<List<EditoraDTO>> getAllEditorasDTO(){
-		return new ResponseEntity<>(editoraService.getAllEditoraDTO(),
-				HttpStatus.OK);
+	@GetMapping
+	public ResponseEntity<List<Editora>> getAllEditoras() {
+		return new ResponseEntity<>(editoraService.getAllEditora(), HttpStatus.OK);
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Editora> getEditoraById(@PathVariable Integer id) {
 		Editora editora = editoraService.getEditoraById(id);
-		if(null != editora)
-			return new ResponseEntity<>(editora,
-					HttpStatus.OK);
+		if (null != editora)
+			return new ResponseEntity<>(editora, HttpStatus.OK);
 		else
-			return new ResponseEntity<>(editora,
-					HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(editora, HttpStatus.NOT_FOUND);
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<Editora> saveEditora(@RequestBody Editora editora) {
-		return new ResponseEntity<>(editoraService.saveEditora(editora),
-				HttpStatus.CREATED);
+		return new ResponseEntity<>(editoraService.saveEditora(editora), HttpStatus.CREATED);
 	}
-	
-	@PostMapping("/dto")
-	public ResponseEntity<EditoraDTO> saveEditoraDTO(@RequestBody EditoraDTO editoraDTO) {
-		return new ResponseEntity<>(editoraService.saveEditoraDTO(editoraDTO),
-				HttpStatus.CREATED);
-	}
-	
-	@PutMapping("/dto/{id}")
-    public ResponseEntity<EditoraDTO> updateEditoraDTO (@RequestBody EditoraDTO editoraDTO, @PathVariable Integer id) {
-        return new ResponseEntity<>(editoraService.updateEditoraDTO(editoraDTO,id),HttpStatus.OK);
-    }
+
 	@PutMapping("/{id}")
-	public ResponseEntity<Editora> updateEditora(@RequestBody Editora editora, 
-			@PathVariable Integer id){
-		return new ResponseEntity<>(editoraService.updateEditora(editora, id),
-				HttpStatus.OK);
+	public ResponseEntity<Editora> updateEditora(@RequestBody Editora editora, @PathVariable Integer id) {
+		return new ResponseEntity<>(editoraService.updateEditora(editora, id), HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Editora> deleteEditora(@PathVariable Integer id) {
 		Editora editora = editoraService.getEditoraById(id);
-		if(null == editora)
-			return new ResponseEntity<>(editora,
-					HttpStatus.NOT_FOUND);
+		if (null == editora)
+			return new ResponseEntity<>(editora, HttpStatus.NOT_FOUND);
 		else
-			return new ResponseEntity<>(editoraService.deleteEditora(id),
-					HttpStatus.OK);
+			return new ResponseEntity<>(editoraService.deleteEditora(id), HttpStatus.OK);
 	}
 
+	// DTO
+	@PutMapping("/dto/{id}")
+	public ResponseEntity<EditoraDTO> updateEditoraDTO(@RequestBody EditoraDTO editoraDTO, @PathVariable Integer id) {
+		return new ResponseEntity<>(editoraService.updateEditoraDTO(editoraDTO, id), HttpStatus.OK);
+	}
+
+	@PostMapping("/dto")
+	public ResponseEntity<EditoraDTO> saveEditoraDTO(@RequestBody EditoraDTO editoraDTO) {
+		return new ResponseEntity<>(editoraService.saveEditoraDTO(editoraDTO), HttpStatus.CREATED);
+	}
+
+	@GetMapping("/dto")
+	public ResponseEntity<List<EditoraDTO>> getAllEditorasDTO() {
+		return new ResponseEntity<>(editoraService.getAllEditorasDTO(), HttpStatus.OK);
+	}
+
+	@GetMapping("/editora-livros")
+	public ResponseEntity<List<EditoraDTO>> getAllEditorasLivrosDTO(){
+		return new ResponseEntity<>(editoraService.getAllEditorasLivrosDTO(), HttpStatus.OK);
+	}
 }

@@ -24,14 +24,10 @@ public class Editora {
 	@Column(name = "nome")
 	private String nome;
 
-	
-	@JsonManagedReference(value="mapEditora")
+	@JsonManagedReference(value = "mapEditora")
 	@OneToMany(mappedBy = "editora")
 	private Set<Livro> livros;
 
-	
-	
-	
 	public Integer getCodigoEditora() {
 		return codigoEditora;
 	}

@@ -37,15 +37,14 @@ public class Livro {
 	@Column(name = "codigoisbn")
 	private Integer codigoISBN;
 
-	@JsonBackReference(value="mapEditora")
-    @ManyToOne
-    @JoinColumn(name = "codigoeditora", referencedColumnName = "codigoeditora")
-    private Editora editora;
+	@JsonBackReference(value = "mapEditora")
+	@ManyToOne
+	@JoinColumn(name = "codigoeditora", referencedColumnName = "codigoeditora")
+	private Editora editora;
 
-
-    @JsonManagedReference(value="emprestLivro")
-    @OneToMany(mappedBy = "livro")
-    private Set<Emprestimo> emprestimo;
+	@JsonManagedReference(value = "emprestLivro")
+	@OneToMany(mappedBy = "livro")
+	private Set<Emprestimo> emprestimo;
 
 	public Integer getCodigoLivro() {
 		return codigoLivro;

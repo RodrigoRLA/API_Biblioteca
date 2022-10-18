@@ -12,26 +12,26 @@ import br.com.residencia.biblioteca.repository.AlunoRepository;
 
 @Service
 public class AlunoService {
-	
+
 	@Autowired
 	AlunoRepository alunoRepository;
-	
-	public List<Aluno> getAllAlunos(){
+
+	public List<Aluno> getAllAlunos() {
 		return alunoRepository.findAll();
 	}
-	
-	public Aluno getAlunoById (Integer id) {
-		//return alunoRepository.findById(idAluno).get();
+
+	public Aluno getAlunoById(Integer id) {
+
 		return alunoRepository.findById(id).orElse(null);
 	}
-	
-	public Aluno saveAluno (Aluno aluno) {
+
+	public Aluno saveAluno(Aluno aluno) {
 		return alunoRepository.save(aluno);
 	}
-	
+
 	public Aluno updateAluno(Aluno aluno, Integer id) {
 		Aluno alunoExistenteNoBanco = alunoRepository.findById(id).get();
-		
+
 		alunoExistenteNoBanco.setBairro(aluno.getBairro());
 		alunoExistenteNoBanco.setCidade(aluno.getCidade());
 		alunoExistenteNoBanco.setComplemento(aluno.getComplemento());
@@ -40,46 +40,50 @@ public class AlunoService {
 		alunoExistenteNoBanco.setLogradouro(aluno.getLogradouro());
 		alunoExistenteNoBanco.setNome(aluno.getNome());
 		alunoExistenteNoBanco.setNumeroLogradouro(aluno.getNumeroLogradouro());
-		
+
 		return alunoRepository.save(alunoExistenteNoBanco);
 	}
-	
-	public Aluno deleteAluno (Integer id) {
+
+	public Aluno deleteAluno(Integer id) {
 		alunoRepository.deleteById(id);
 		return getAlunoById(id);
 	}
-	
-	//DTO
-	/*
-	public static List<AlunoDTO> getAllAlunosDTO() {
-		List<Aluno> listAluno = alunoRepository.findAll();
-		List<AlunoDTO> listAlunoDTO = new ArrayList<>();
-		return listAlunoDTO;	
+
+	// DTO
+	public List<AlunoDTO> getAllAlunosDTO() {
+		List<Aluno> listaAluno = alunoRepository.findAll();
+		List<AlunoDTO> listaAlunoDTO = new ArrayList<>();
+
+		for (Aluno aluno : listaAluno) {
+
+			AlunoDTO alunoDTO = toDTO(aluno);
+
+			listaAlunoDTO.add(alunoDTO);
+		}
+		return listaAlunoDTO;
+
 	}
-	*/
+
 	public AlunoDTO saveAlunoDTO(AlunoDTO AlunoDTO) {
 		Aluno aluno = toEntidade(AlunoDTO);
-		Aluno novoAluno =alunoRepository.save(aluno);
+		Aluno novoAluno = alunoRepository.save(aluno);
 
 		AlunoDTO alunoAtualizadoDTO = toDTO(novoAluno);
 
 		return alunoAtualizadoDTO;
 	}
-	
+
 	public AlunoDTO updateAlunoDTO(AlunoDTO alunoDTO, Integer id) {
 
 		Aluno alunoExistenteNoBanco = getAlunoById(id);
 		AlunoDTO alunoAtualizadoDTO = new AlunoDTO();
 		if (alunoExistenteNoBanco != null) {
-		
+
 			alunoExistenteNoBanco = toEntidade(alunoDTO);
-			//editoraExistenteNoBanco.setNome(editoraDTO.getNome());
 			Aluno alunoAtualizado = alunoRepository.save(alunoExistenteNoBanco);
-			
+
 			alunoAtualizadoDTO = toDTO(alunoAtualizado);
 
-			//editoraAtualizadaDTO.setCodigoEditora(editoraAtualizada.getCodigoEditora());
-			//editoraAtualizadaDTO.setNome(editoraAtualizada.getNome());
 		}
 		return alunoAtualizadoDTO;
 	}
@@ -95,7 +99,7 @@ public class AlunoService {
 		aluno.setLogradouro(alunoDTO.getLogradouro());
 		aluno.setNome(alunoDTO.getNome());
 		aluno.setNumeroLogradouro(alunoDTO.getNumeroLogradouro());
-		
+
 		return aluno;
 	}
 
