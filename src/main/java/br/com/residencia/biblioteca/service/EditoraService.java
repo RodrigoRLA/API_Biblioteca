@@ -1,11 +1,15 @@
 package br.com.residencia.biblioteca.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import br.com.residencia.biblioteca.dto.ConsultaCNPJDTO;
 import br.com.residencia.biblioteca.dto.EditoraDTO;
 import br.com.residencia.biblioteca.dto.LivroDTO;
 import br.com.residencia.biblioteca.entity.Editora;
@@ -25,7 +29,29 @@ public class EditoraService {
 	@Autowired
 	LivroService livroService;
 	
+	//CNPJ
+	
+	public ConsultaCNPJDTO consultaCnpjApiExterna(String cnpj) {
+		RestTemplate restTemplate = new RestTemplate();
+		String uri = "https://receitaws.com.br/v1/cnpj/{cnpj}";
+		
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("cnpj", cnpj);
+		
+		ConsultaCNPJDTO consultaCNPJDTO = restTemplate.getForObject(uri, ConsultaCNPJDTO.class, params);
+		
+		return consultaCNPJDTO;
+	}
+	public Editora saveEditoraFromApi(String cnpj) {
+		
+		ConsultaCNPJDTO consultaCNPJDTO = consultaCnpjApiExterna(cnpj);
+		Editora editora = new Editora();
+		editora.setNome(consultaCNPJDTO.getNome());
 
+		
+		return editoraRepository.save(editora);
+	}
+	///
 	public List<Editora> getAllEditora() {
 		return editoraRepository.findAll();
 	}
