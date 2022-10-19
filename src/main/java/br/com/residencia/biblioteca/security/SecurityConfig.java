@@ -22,8 +22,8 @@ import br.com.residencia.biblioteca.repository.UserRepository;
 @EnableWebSecurity 
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired 
-    private UserRepository userRepo;
+   // @Autowired 
+   // private UserRepository userRepo;
     
     @Autowired 
     private JWTFilter filter;

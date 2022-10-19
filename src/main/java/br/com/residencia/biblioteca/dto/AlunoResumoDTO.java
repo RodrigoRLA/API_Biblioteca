@@ -7,7 +7,7 @@ public class AlunoResumoDTO {
 	private Integer numeroMatriculaAluno;
 	private String nome;
 	private String cpf;
-	private List<EmprestimoDTO> listaEmprestimoResumoDTO;
+	private List<EmprestimoResumoDTO> listaEmprestimoResumoDTO;
 	
 	
 
@@ -16,7 +16,7 @@ public class AlunoResumoDTO {
 	}
 
 	public AlunoResumoDTO(Integer numeroMatriculaAluno, String nome, String cpf,
-			List<EmprestimoDTO> listaEmprestimoResumoDTO) {
+			List<EmprestimoResumoDTO> listaEmprestimoResumoDTO) {
 
 		this.numeroMatriculaAluno = numeroMatriculaAluno;
 		this.nome = nome;
@@ -48,11 +48,11 @@ public class AlunoResumoDTO {
 		this.cpf = cpf;
 	}
 
-	public List<EmprestimoDTO> getListaEmprestimoResumoDTO() {
+	public List<EmprestimoResumoDTO> getListaEmprestimoResumoDTO() {
 		return listaEmprestimoResumoDTO;
 	}
 
-	public void setListaEmprestimoResumoDTO(List<EmprestimoDTO> listaEmprestimoResumoDTO) {
+	public void setListaEmprestimoResumoDTO(List<EmprestimoResumoDTO> listaEmprestimoResumoDTO) {
 		this.listaEmprestimoResumoDTO = listaEmprestimoResumoDTO;
 	}
 
