@@ -28,6 +28,39 @@ public class Editora {
 	@OneToMany(mappedBy = "editora")
 	private Set<Livro> livros;
 
+	@Column(name = "imagem_nome")
+	private String imagemNome;
+
+	@Column(name = "imagem_filename")
+	private String imagemFileName;
+
+	@Column(name = "imagem_url")
+	private String imagemUrl;
+
+	public String getImagemNome() {
+		return imagemNome;
+	}
+
+	public void setImagemNome(String imagemNome) {
+		this.imagemNome = imagemNome;
+	}
+
+	public String getImagemFileName() {
+		return imagemFileName;
+	}
+
+	public void setImagemFileName(String imagemFileName) {
+		this.imagemFileName = imagemFileName;
+	}
+
+	public String getImagemUrl() {
+		return imagemUrl;
+	}
+
+	public void setImagemUrl(String imagemUrl) {
+		this.imagemUrl = imagemUrl;
+	}
+
 	public Integer getCodigoEditora() {
 		return codigoEditora;
 	}

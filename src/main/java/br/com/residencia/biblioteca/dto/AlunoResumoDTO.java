@@ -8,11 +8,9 @@ public class AlunoResumoDTO {
 	private String nome;
 	private String cpf;
 	private List<EmprestimoDTO> listaEmprestimoResumoDTO;
-	
-	
 
 	public AlunoResumoDTO() {
-		
+
 	}
 
 	public AlunoResumoDTO(Integer numeroMatriculaAluno, String nome, String cpf,
