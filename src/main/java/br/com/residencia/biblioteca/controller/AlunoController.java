@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.residencia.biblioteca.dto.AlunoDTO;
-import br.com.residencia.biblioteca.dto.AlunoResumoDTO;
 import br.com.residencia.biblioteca.entity.Aluno;
 import br.com.residencia.biblioteca.service.AlunoService;
 
@@ -84,7 +83,7 @@ public class AlunoController {
 	
 	@GetMapping("/dto/{id}")
 	public ResponseEntity<AlunoDTO> getAlunoDTOById(@PathVariable Integer id) {
-		AlunoDTO alunoDTO = alunoService.getAlunoDTOById(id);
+		AlunoDTO alunoDTO = alunoService.getAlunoByIdDTO(id);
 		if(null != alunoDTO)
 			return new ResponseEntity<>(alunoDTO,
 					HttpStatus.OK);
@@ -94,10 +93,10 @@ public class AlunoController {
 	}
 	
 	///AlunoResumoDTO
-	
+	/*
 	@GetMapping("/AlunoResumoDTO/{id}")
 	public ResponseEntity<AlunoResumoDTO> getAlunoResumoDTOById(@PathVariable Integer id) {
-		AlunoResumoDTO alunoResumoDTO = alunoService.getAlunoResumoDTOById(id);
+		AlunoResumoDTO alunoResumoDTO = alunoService.getAlunoByIdDTO(id);
 		if(null != alunoResumoDTO)
 			return new ResponseEntity<>(alunoResumoDTO,
 					HttpStatus.OK);
@@ -111,4 +110,5 @@ public class AlunoController {
 		return new ResponseEntity<>(alunoService.getAllAlunoResumoDTO(),
 				HttpStatus.OK);
 	}
+	*/
 }

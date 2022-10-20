@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.residencia.biblioteca.dto.AlunoDTO;
-import br.com.residencia.biblioteca.dto.AlunoResumoDTO;
 import br.com.residencia.biblioteca.entity.Aluno;
-import br.com.residencia.biblioteca.entity.Emprestimo;
 import br.com.residencia.biblioteca.repository.AlunoRepository;
 import br.com.residencia.biblioteca.repository.EmprestimoRepository;
 
@@ -57,7 +55,7 @@ public class AlunoService {
 
 	// DTO
 	
-	public AlunoDTO getAlunoDTOById(Integer id) {
+	public AlunoDTO getAlunoByIdDTO(Integer id) {
 		AlunoDTO alunoDTO = new AlunoDTO();
 		Aluno aluno = alunoRepository.findById(id).orElse(null);
 		
@@ -137,7 +135,7 @@ public class AlunoService {
 	}
 	
 	///AlunoResumoDTO
-	
+	/*
 	public AlunoDTO getAlunoDTOById(Integer id) {
 		AlunoDTO alunoDTO = new AlunoDTO();
 		Aluno aluno = alunoRepository.findById(id).orElse(null);
@@ -150,7 +148,7 @@ public class AlunoService {
 	}
 	
 	public List<AlunoResumoDTO> getAllAlunoResumoDTO() {
-		List<AlunoResumoDTO> listaAluno = alunoRepository.findAll();
+		List<Aluno> listaAluno = alunoRepository.findAll();
 		List<AlunoResumoDTO> listaAlunoDTO = new ArrayList<>();
 
 		for (Aluno aluno : listaAluno) {
@@ -162,4 +160,5 @@ public class AlunoService {
 		return listaAlunoDTO;
 
 	}
+	*/
 }

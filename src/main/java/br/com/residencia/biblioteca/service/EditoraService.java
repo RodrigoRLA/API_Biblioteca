@@ -25,6 +25,9 @@ public class EditoraService {
 	@Autowired
 	LivroService livroService;
 	
+	@Autowired
+	EmailService emailService;
+	
 
 	public List<Editora> getAllEditora() {
 		return editoraRepository.findAll();
@@ -73,6 +76,8 @@ public class EditoraService {
 			editoraAtualizadaDTO = toDTO(editoraAtualizada);
 
 		}
+		emailService.sendEmail("alveslisboa1995@gmail.com", "Teste de envio", editoraAtualizadaDTO.toString());
+		
 		return editoraAtualizadaDTO;
 	}
 
@@ -129,4 +134,7 @@ public class EditoraService {
 		}
 		return listaEditoraDTO;
 	}
+	
+	
+	
 }

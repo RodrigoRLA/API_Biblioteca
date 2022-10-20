@@ -18,6 +18,13 @@ public class EditoraDTO {
 		this.codigoEditora = codigoEditora;
 		this.nome = nome;
 	}
+	
+
+	@Override
+	public String toString() {
+		return "EditoraDTO [codigoEditora=" + codigoEditora + ", nome=" + nome + ", listalivrosDTO=" + listalivrosDTO
+				+ "]";
+	}
 
 	public Integer getCodigoEditora() {
 		return codigoEditora;
