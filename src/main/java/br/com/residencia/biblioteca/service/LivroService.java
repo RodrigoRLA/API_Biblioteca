@@ -3,14 +3,12 @@ package br.com.residencia.biblioteca.service;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.residencia.biblioteca.dto.LivroDTO;
 import br.com.residencia.biblioteca.entity.Livro;
 import br.com.residencia.biblioteca.repository.LivroRepository;
-
 
 @Service
 public class LivroService {
@@ -22,8 +20,10 @@ public class LivroService {
 		return livroRepository.findAll();
 	}
 
-	public Livro getLivroById(Integer idLivro) {
-		return livroRepository.findById(idLivro).get();
+	public Livro getLivroById(Integer id) {
+		// return livroRepository.findById(id).get();
+		return livroRepository.findById(id).orElse(null);
+
 	}
 
 	public Livro saveLivro(Livro livro) {
@@ -108,6 +108,5 @@ public class LivroService {
 
 		return livroDTO;
 	}
-	
-	
+
 }

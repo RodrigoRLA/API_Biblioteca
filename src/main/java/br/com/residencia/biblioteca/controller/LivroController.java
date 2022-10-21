@@ -24,63 +24,56 @@ import br.com.residencia.biblioteca.service.LivroService;
 public class LivroController {
 	@Autowired
 	LivroService livroService;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Livro>> getAllLivros(){
-		return new ResponseEntity<>(livroService.getAllLivro(),
-				HttpStatus.OK);
+	public ResponseEntity<List<Livro>> getAllLivros() {
+		return new ResponseEntity<>(livroService.getAllLivro(), HttpStatus.OK);
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Livro> getLivroById(@PathVariable Integer id) {
 		Livro livro = livroService.getLivroById(id);
-		//if(null != livro)
-		if(null == null)
-			throw new NoSuchElementFoundException("Não encontrado, o livro" + id);
+		// tratamento de excessão
+		if (null == null)
+			throw new NoSuchElementFoundException("Não foi encontrado, o livro" + id);
+		// throw new NoSuchElementException("Não foi encontrado, o livro" + id);
 		else
-			return new ResponseEntity<>(livro,
-					HttpStatus.OK);
+			return new ResponseEntity<>(livro, HttpStatus.OK);
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<Livro> saveLivro(@RequestBody Livro livro) {
-		return new ResponseEntity<>(livroService.saveLivro(livro),
-				HttpStatus.CREATED);
+		return new ResponseEntity<>(livroService.saveLivro(livro), HttpStatus.CREATED);
 	}
-	
+
 	@PutMapping("/{id}")
-	public ResponseEntity<Livro> updateLivro(@RequestBody Livro livro, 
-			@PathVariable Integer id){
-		return new ResponseEntity<>(livroService.updateLivro(livro, id),
-				HttpStatus.OK);
+	public ResponseEntity<Livro> updateLivro(@RequestBody Livro livro, @PathVariable Integer id) {
+		return new ResponseEntity<>(livroService.updateLivro(livro, id), HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Livro> deleteLivro(@PathVariable Integer id) {
 		Livro livro = livroService.getLivroById(id);
-		if(null == livro)
-			return new ResponseEntity<>(livro,
-					HttpStatus.NOT_FOUND);
+		if (null == livro)
+			return new ResponseEntity<>(livro, HttpStatus.NOT_FOUND);
 		else
-			return new ResponseEntity<>(livroService.deleteLivro(id),
-					HttpStatus.OK);
+			return new ResponseEntity<>(livroService.deleteLivro(id), HttpStatus.OK);
 	}
-	
-	//DTO
+
+	// DTO
 	@PostMapping("/dto")
 	public ResponseEntity<LivroDTO> saveLivroDTO(@RequestBody LivroDTO livroDTO) {
-		return new ResponseEntity<>(livroService.saveLivroDTO(livroDTO),
-				HttpStatus.CREATED);
+		return new ResponseEntity<>(livroService.saveLivroDTO(livroDTO), HttpStatus.CREATED);
 	}
-	
+
 	@PutMapping("/dto/{id}")
-    public ResponseEntity<LivroDTO> updateLivroDTO (@RequestBody LivroDTO livroDTO, @PathVariable Integer id) {
-        return new ResponseEntity<>(livroService.updateLivroDTO(livroDTO,id),HttpStatus.OK);
-    }
+	public ResponseEntity<LivroDTO> updateLivroDTO(@RequestBody LivroDTO livroDTO, @PathVariable Integer id) {
+		return new ResponseEntity<>(livroService.updateLivroDTO(livroDTO, id), HttpStatus.OK);
+	}
+
 	@GetMapping("/dto")
-	public ResponseEntity<List<LivroDTO>> getAllLivroDTO(){
-		return new ResponseEntity<>(livroService.getAllLivroDTO(),
-				HttpStatus.OK);
+	public ResponseEntity<List<LivroDTO>> getAllLivroDTO() {
+		return new ResponseEntity<>(livroService.getAllLivroDTO(), HttpStatus.OK);
 	}
 
 }
