@@ -2,6 +2,8 @@ package br.com.residencia.biblioteca.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,7 +51,7 @@ public class AlunoController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Aluno> updateAluno(@RequestBody Aluno aluno, 
+	public ResponseEntity<Aluno> updateAluno(@Valid @RequestBody Aluno aluno, 
 			@PathVariable Integer id){
 		return new ResponseEntity<>(alunoService.updateAluno(aluno, id),
 				HttpStatus.OK);
